@@ -1,0 +1,24 @@
+descriptor_id: BAZEL
+descriptor_type: tooling_format
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
+file_extensions:
+  - ".bazel"
+  - ".bzl"
+file_names_regex:
+  - "BUILD"
+  - "WORKSPACE"
+linters:
+  # Buildifier
+  - linter_name: buildifier
+    name: BAZEL_BUILDIFIER
+    linter_url: https://github.com/bazelbuild/buildtools/tree/master/buildifier
+    linter_rules_url: https://github.com/bazelbuild/buildtools/blob/master/WARNINGS.md
+    cli_lint_mode: list_of_files
+    cli_lint_extra_args:
+      - "--lint=warn"
+    examples:
+      - "buildifier --lint=warn WORKSPACE"
+    install:
+      dockerfile:
+        - RUN go install github.com/bazelbuild/buildtools/buildifier@latest
