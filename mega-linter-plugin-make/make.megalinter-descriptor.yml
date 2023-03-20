@@ -1,0 +1,20 @@
+descriptor_id: MAKE
+descriptor_type: tooling_format
+descriptor_flavors:
+  - all_flavors # Applicable to CI in any language project
+file_extensions:
+  - ".mk"
+file_names_regex:
+  - "Makefile"
+linters:
+  # Buildifier
+  - linter_name: make
+    name: MAKEFILE_MAKE
+    linter_url: https://www.gnu.org/software/make
+    linter_rules_url: https://www.gnu.org/software/make/manual/make.html
+    cli_lint_mode: file
+    cli_lint_extra_args_after:
+      - "--dry-run"
+      - "-f"
+    examples:
+      - "make --dry-run -f my_file"

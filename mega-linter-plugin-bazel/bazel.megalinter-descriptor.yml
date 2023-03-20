@@ -17,6 +17,7 @@ linters:
     cli_lint_mode: list_of_files
     cli_lint_extra_args:
       - "--lint=warn"
+    version_extract_regex: "(?<=version: )(.+)"
     examples:
       - "buildifier --lint=warn WORKSPACE"
     install:
